@@ -1,0 +1,32 @@
+@use '~bootstrap/scss/bootstrap';
+
+.profile-image-lg{
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+}
+.profile-image-md{
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+}
+.profile-image-sm{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+.book-image-lg{
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+}
+.book-image-md{
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+}
+.book-image-sm{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
