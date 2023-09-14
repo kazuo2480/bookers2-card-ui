@@ -1,4 +1,9 @@
 @use '~bootstrap/scss/bootstrap';
+.profile-image-xl{
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+}
 
 .profile-image-lg{
     width: 128px;

@@ -1,15 +1,24 @@
-<table class='table'>
-  <tr><%= image_tag user.get_profile_image, class:"profile-image-lg rounded-circle" %></tr>
-  <tr>
-	  <th>name</th>
-	  <th><%= user.name %></th>
-  </tr>
-  <tr>
-	  <th>introduction</th>
-	  <th><%= user.introduction %></th>
-  </tr>
-</table>
-
+<div class="row">
+  <div class="col-8 offset-md-2">
+    <%= image_tag user.get_profile_image, class:"profile-image-lg rounded-circle card-img-top"%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+        <h4>name</h4>
+  </div>
+  <div class="offset-2 col-lg-8">
+      <%= user.name %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h4>introduction</h4>
+  </div>
+  <div class="offset-2 col-lg-8">
+    <%= user.introduction %>
+  </div>
+</div>
 <div class='row'>
   <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
 </div>

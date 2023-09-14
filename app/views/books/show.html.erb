@@ -8,31 +8,40 @@
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
-  		<table class='table'>
-  		  <tr>
-  		    <td>
-            <%= link_to book_path(@book.id) do %>
-            <%= image_tag @book.get_book_image, class: "book-image-md" %><br>
-            <%= @book.title %>
-            <% end %>
-          </td>
-          <td><%= simple_format(@book.body) %></td>
-          <td class="favorite-btn"><%= render "favorites/favorite-btn", book: @book %></td>
-          <td><i class="fas fa-comment"></i><%= @book.book_comments.count %></td>
-          <% if @book.user == current_user %>
-            <td>
-              <%= link_to edit_book_path(@book) do %>
-                <i class="fas fa-edit"></i>
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <%= image_tag @book.get_book_image, class:"card-img-top"%>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class="card-text text-right">         
+                <%= link_to user_path(@book.user) do %>
+                  <%= image_tag @book.user.get_profile_image, class: "profile-image-sm rounded-circle" %>
+                <% end %>
+                <small class="text-muted">
+                <%= @book.created_at.strftime("%Y/%m/%d %X") %></small>
+              </div>
+              <h5 class="card-title"><%= @book.title%></h5>
+              <p class="card-text"><%= @book.body %></p>
+              <div class="card-text text-right">
+                <%= render "favorites/favorite-btn", book: @book %>
+                <i class="fas fa-comment"></i><%= @book.book_comments.count %>
+              </div>
+              <% if current_user == @book.user %>
+                <div class="card-text text-right">
+        					<%= link_to edit_book_path(@book.id) do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+        					<%= link_to book_path(@book.id), method: :delete, data: { confirm: "削除してもよろしいですか？" } do %>
+				        		<i class="fas fa-trash-alt"></i>
+					        <% end %>
+                </div>
               <% end %>
-            </td>
-            <td>
-              <%= link_to book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' } do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      </table>
+            </div>
+          </div>
+        </div>
+      </div>
       <%= render 'books/comment', book: @book,book_comment: @book_comment%>
     </div>
   </div>
