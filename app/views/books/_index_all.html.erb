@@ -1,0 +1,145 @@
+<!-- table -->
+<!--
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th>favorite</th>
+      <th>comment</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% books.each do |book| %>
+      <tr>
+        <td>
+          <%= link_to user_path(book.user) do %>
+            <%= image_tag book.user.get_profile_image, class: "profile-image-sm rounded-circle" %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to book_path(book), class: "book_#{book.id}" do %>
+            <%= image_tag book.get_book_image, class: "book-image-sm" %>
+            <%= book.title.truncate(12)%>
+          <% end %>
+        </td>
+        <td>
+          <%= book.body.truncate(12) %>
+        </td>
+        <td>
+          <%= render "favorites/favorite-btn", book: book %>
+        </td>
+        <td>
+          <i class="fas fa-comment"></i><%= book.book_comments.count %>
+        </td>
+        <td>
+          <%= book.created_at.strftime("%Y/%m/%d") %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+-->
+<!-- table レイアウト目的 -->
+
+<!--
+<table class='table table-hover table-inverse'>
+  <tbody>
+    <% books.each do |book| %>
+      <tr>
+        <td>
+          <%= link_to book_path(book), class: "book_#{book.id}" do %>
+            <%= image_tag book.get_book_image, class: "book-image-lg" %>
+          <% end %>
+        </td>
+        <td>
+          <div class="text-right">
+            <%= link_to user_path(book.user) do %>
+              <%= image_tag book.user.get_profile_image, class: "profile-image-sm rounded-circle" %>
+            <% end %>
+            <small class="text-muted"><%= book.created_at.strftime("%Y/%m/%d %X") %></small>
+          </div>
+          </div>
+          <h5><%= book.title%></h5>
+          <p><%= book.body %><p>
+          <div class="text-right">
+            <%= render "favorites/favorite-btn", book: book %>
+            <i class="fas fa-comment"></i><%= book.book_comments.count %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+-->
+
+<!-- カード横 --->
+
+<% books.each do |book| %>
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+        <%= image_tag book.get_book_image, class:"card-img-top"%>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <div class="card-text text-right">         
+          <%= link_to user_path(book.user) do %>
+            <%= image_tag book.user.get_profile_image, class: "profile-image-sm rounded-circle" %>
+          <% end %>
+          <small class="text-muted">
+          <%= book.created_at.strftime("%Y/%m/%d %X") %></small>
+        </div>
+        <h5 class="card-title"><%= book.title%></h5>
+        <p class="card-text"><%= book.body %></p>
+        <div class="card-text text-right">
+          <%= render "favorites/favorite-btn", book: book %>
+          <i class="fas fa-comment"></i><%= book.book_comments.count %>
+        </div>
+        <div class="card-text text-right">
+            <%= link_to book_path(book), class: "book_#{book.id}" do %>
+              詳細へ
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<!-- カード縦 --->
+<!--
+<div class="row">
+  <% books.each do |book| %>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card">
+        <%= image_tag book.get_book_image, class:"card-img-top"%>
+        <div class="card-body text-right">
+            <%= link_to book_path(book), class: "book_#{book.id}" do %>
+              詳細へ
+            <% end %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= book.title.truncate(12)%></h5>
+          <p class="card-text"><%= book.body.truncate(30) %></p>
+        </div>
+        <div class="card-body text-right">
+          <%= render "favorites/favorite-btn", book: book %>
+          <i class="fas fa-comment"></i><%= book.book_comments.count %>
+        </div>
+        <div class="card-body text-right">
+          <%= link_to user_path(book.user) do %>
+            <%= image_tag book.user.get_profile_image, class: "profile-image-sm rounded-circle" %>
+          <% end %>
+          <%= book.created_at.strftime("%Y/%m/%d") %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+-->
